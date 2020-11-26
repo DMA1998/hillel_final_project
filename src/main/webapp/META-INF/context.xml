@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/video_lib"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="1234"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              maxActive="15"
+              maxIdle="5"
+              maxWait="5000"
+              validationQuery="SELECT 1"
+              url="jdbc:mysql://localhost:3306/video_lib?&amp;useUnicode=true&amp;
+              useJDBCCompliantTimezoneShift=true&amp;
+              useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+</Context>
