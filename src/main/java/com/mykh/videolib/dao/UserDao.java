@@ -1,11 +1,10 @@
 package com.mykh.videolib.dao;
 
-import static com.mykh.videolib.utils.QueryConstants.*;
-
 import com.mykh.videolib.connection.ConnectionPool;
 import com.mykh.videolib.connection.DbConnection;
 import com.mykh.videolib.entities.User;
 import com.mykh.videolib.service.UserService;
+import com.mykh.videolib.utils.SqlQuery;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -32,14 +31,13 @@ public class UserDao {
 
     public List<User> users() {
         List<User> result = new ArrayList<>();
-        String sqlQuery = FIND_USERS_IN_DATABASE;
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
 
             connection = ConnectionPool.getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.FIND_USERS_IN_DATABASE.getQuery());
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User user = new User(resultSet.getString(USER_LOGIN), resultSet.getInt(USER_PASSWORD));

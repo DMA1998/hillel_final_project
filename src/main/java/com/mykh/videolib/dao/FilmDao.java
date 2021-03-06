@@ -3,11 +3,11 @@ package com.mykh.videolib.dao;
 import com.mykh.videolib.entities.Actor;
 import com.mykh.videolib.entities.Film;
 import com.mykh.videolib.entities.Producer;
+import com.mykh.videolib.utils.SqlQuery;
 
 import java.sql.*;
 import java.util.*;
 
-import static com.mykh.videolib.utils.QueryConstants.*;
 import static com.mykh.videolib.utils.ColumnConstants.*;
 import static com.mykh.videolib.connection.ConnectionPool.*;
 
@@ -16,59 +16,56 @@ public class FilmDao implements IFilmDao {
     @Override
     public List<Actor> findActorsInParticularFilm(String film) {
         List<Actor> result = new ArrayList<>();
-        String sqlQuery = SEARCH_ACTORS_BY_PARTICULAR_FILM;
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             connection = getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.SEARCH_ACTORS_BY_PARTICULAR_FILM.getQuery());
             statement.setString(1, film);
             resultSet = statement.executeQuery();
             result = getActors(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection,statement,resultSet);
+        close(connection, statement, resultSet);
         return result;
     }
 
     @Override
     public List<Actor> findActorsByManyFilms(int filmsQuantity) {
         List<Actor> result = new ArrayList<>();
-        String sqlQuery = SEARCH_ACTORS_BY_MANY_FILMS;
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             connection = getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.SEARCH_ACTORS_BY_MANY_FILMS.getQuery());
             statement.setInt(1, filmsQuantity);
             resultSet = statement.executeQuery();
             result = getActors(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection,statement,resultSet);
+        close(connection, statement, resultSet);
         return result;
     }
 
     @Override
     public List<Actor> findActorsLikeProducers() {
         List<Actor> result = new ArrayList<>();
-        String sqlQuery = SEARCH_ACTORS_LIKE_PRODUCERS;
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             connection = getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.SEARCH_ACTORS_LIKE_PRODUCERS.getQuery());
             resultSet = statement.executeQuery();
             result = getActors(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection,statement,resultSet);
+        close(connection, statement, resultSet);
         return result;
     }
 
@@ -77,13 +74,12 @@ public class FilmDao implements IFilmDao {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int previousYear = currentYear - 1;
         List<Film> result = new ArrayList<>();
-        String sqlQuery = FIND_FILMS_BY_CURRENT_PREVIOUS_YEAR;
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             connection = getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.FIND_FILMS_BY_CURRENT_PREVIOUS_YEAR.getQuery());
             statement.setInt(1, previousYear);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -95,31 +91,29 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection,statement,resultSet);
+        close(connection, statement, resultSet);
         return uniqueFilms(result);
     }
 
     @Override
     public int removeFilmsByYear(int year) {
-        String sqlQuery = DELETE_FILM_BY_YEAR;
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             connection = getInstance().getConnection();
-            statement = connection.prepareStatement(sqlQuery);
+            statement = connection.prepareStatement(SqlQuery.DELETE_FILM_BY_YEAR.getQuery());
             statement.setInt(1, year);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection,statement);
+        close(connection, statement);
         return year;
     }
 
     private List<Film> appendActorsToFilm(List<Film> films, Connection connection) {
-        String sqlQuery = FIND_ACTORS;
         for (Film film : films) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery.FIND_ACTORS.getQuery())) {
                 preparedStatement.setString(1, film.getName());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 List<Actor> actors = getActors(resultSet);
@@ -132,10 +126,9 @@ public class FilmDao implements IFilmDao {
     }
 
     private List<Film> appendProducerToFilm(List<Film> films, Connection connection) {
-        String sqlQuery = FIND_PRODUCER;
         for (Film film : films) {
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+                PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery.FIND_PRODUCER.getQuery());
                 preparedStatement.setString(1, film.getName());
                 ResultSet resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
