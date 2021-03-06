@@ -1,7 +1,7 @@
-package com.mykh.videolib.servlets;
+package com.mykh.videolib.servlet;
 
 import com.mykh.videolib.dao.UserDao;
-import com.mykh.videolib.entities.User;
+import com.mykh.videolib.entity.User;
 import com.mykh.videolib.service.UserService;
 
 import javax.servlet.ServletException;

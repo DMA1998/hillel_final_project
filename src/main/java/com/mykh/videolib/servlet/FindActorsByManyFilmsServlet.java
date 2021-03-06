@@ -1,4 +1,4 @@
-package com.mykh.videolib.servlets;
+package com.mykh.videolib.servlet;
 
 import com.mykh.videolib.dao.FilmDao;
 
@@ -9,26 +9,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/removeFilmsByYearServlet")
-public class RemoveFilmsByYearServlet extends HttpServlet {
+@WebServlet("/findActorsByManyFilmsServlet")
+public class FindActorsByManyFilmsServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public RemoveFilmsByYearServlet() {
+    public FindActorsByManyFilmsServlet() {
         dao = new FilmDao();
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/jsp/removeFilmsByYear.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/jsp/findActorsByManyFilms.jsp").forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filmYear = request.getParameter("filmYear");
-        request.setAttribute("remove", dao.removeFilmsByYear(Integer.parseInt(filmYear)));
-        getServletContext().getRequestDispatcher("/jsp/removeFilmsByYear.jsp").forward(request,response);
-
-
+        String filmsQuantity = request.getParameter("filmsQuantity");
+        request.setAttribute("actorsFilms", dao.findActorsByManyFilms(Integer.parseInt(filmsQuantity)));
+        getServletContext().getRequestDispatcher("/jsp/findActorsByManyFilms.jsp").forward(request, response);
     }
+
 
 }

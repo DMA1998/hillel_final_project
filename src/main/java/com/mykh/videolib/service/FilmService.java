@@ -1,8 +1,8 @@
 package com.mykh.videolib.service;
 
-import com.mykh.videolib.entities.Actor;
-import com.mykh.videolib.entities.Film;
-import com.mykh.videolib.entities.Producer;
+import com.mykh.videolib.entity.Actor;
+import com.mykh.videolib.entity.Film;
+import com.mykh.videolib.entity.Producer;
 import com.mykh.videolib.utils.SqlQuery;
 
 import java.sql.*;

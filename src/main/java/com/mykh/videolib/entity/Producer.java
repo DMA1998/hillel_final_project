@@ -1,14 +1,14 @@
-package com.mykh.videolib.entities;
+package com.mykh.videolib.entity;
 
-public class Actor {
+public class Producer {
 
     private String name;
     private String date;
 
-    public Actor() {
+    public Producer() {
     }
 
-    public Actor(String name, String date) {
+    public Producer(String name, String date) {
         this.name = name;
         this.date = date;
     }
@@ -31,8 +31,12 @@ public class Actor {
 
     @Override
     public String toString() {
-        return
-                "Actor(name - " + name +
-                ", actor birthday - " + date + ")";
+        return "Producer(" +
+                "name - " + name +
+                ", birthday - " + date +
+                ')';
+    }
+    public static void s() {
+
     }
 }

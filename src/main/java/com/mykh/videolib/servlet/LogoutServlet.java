@@ -1,4 +1,4 @@
-package com.mykh.videolib.servlets;
+package com.mykh.videolib.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

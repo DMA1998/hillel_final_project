@@ -1,4 +1,4 @@
-package com.mykh.videolib.entities;
+package com.mykh.videolib.entity;
 
 public class User {
 

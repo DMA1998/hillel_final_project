@@ -1,4 +1,4 @@
-package com.mykh.videolib.entities;
+package com.mykh.videolib.entity;
 
 import java.util.List;
 import java.util.Objects;

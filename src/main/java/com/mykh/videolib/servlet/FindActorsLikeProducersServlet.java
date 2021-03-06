@@ -1,4 +1,4 @@
-package com.mykh.videolib.servlets;
+package com.mykh.videolib.servlet;
 
 import com.mykh.videolib.dao.FilmDao;
 
@@ -9,21 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet("/findFilmsByCurrentPreviousYearServlet")
-public class FindFilmsByCurrentPreviousYearServlet extends HttpServlet {
+@WebServlet("/findActorsLikeProducersServlet")
+public class FindActorsLikeProducersServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public FindFilmsByCurrentPreviousYearServlet() {
+    public FindActorsLikeProducersServlet() {
         dao = new FilmDao();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.setAttribute("films",dao.findFilmsByCurrentAndPreviousYear());
-        getServletContext().getRequestDispatcher("/jsp/findFilmsByCurrentPreviousYear.jsp").forward(request,response);
-
-
+        request.setAttribute("producers",dao.findActorsLikeProducers());
+        getServletContext().getRequestDispatcher("/jsp/findActorsLikeProducers.jsp").forward(request, response);
     }
 }

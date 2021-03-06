@@ -1,4 +1,4 @@
-package com.mykh.videolib.filters;
+package com.mykh.videolib.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

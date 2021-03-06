@@ -1,7 +1,7 @@
 package com.mykh.videolib.dao;
 
-import com.mykh.videolib.entities.Actor;
-import com.mykh.videolib.entities.Film;
+import com.mykh.videolib.entity.Actor;
+import com.mykh.videolib.entity.Film;
 import com.mykh.videolib.service.FilmService;
 import com.mykh.videolib.utils.SqlQuery;
 

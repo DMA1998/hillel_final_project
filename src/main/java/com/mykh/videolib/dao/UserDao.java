@@ -1,7 +1,7 @@
 package com.mykh.videolib.dao;
 
 import com.mykh.videolib.connection.ConnectionPool;
-import com.mykh.videolib.entities.User;
+import com.mykh.videolib.entity.User;
 import com.mykh.videolib.service.UserService;
 import com.mykh.videolib.utils.SqlQuery;
 

@@ -1,6 +1,6 @@
 package com.mykh.videolib.service;
 
-import com.mykh.videolib.entities.User;
+import com.mykh.videolib.entity.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
