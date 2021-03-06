@@ -14,7 +14,8 @@ public class FindActorsLikeProducersServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public FindActorsLikeProducersServlet() {
+    @Override
+    public void init() throws ServletException {
         dao = new FilmDao();
     }
 

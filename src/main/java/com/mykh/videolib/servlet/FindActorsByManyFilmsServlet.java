@@ -14,9 +14,11 @@ public class FindActorsByManyFilmsServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public FindActorsByManyFilmsServlet() {
+    @Override
+    public void init() throws ServletException {
         dao = new FilmDao();
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/jsp/findActorsByManyFilms.jsp").forward(request,response);

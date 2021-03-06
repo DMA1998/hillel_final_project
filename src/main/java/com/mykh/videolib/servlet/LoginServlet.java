@@ -15,10 +15,12 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     private UserService userService;
+    private UserDao userDao;
 
     @Override
     public void init() throws ServletException {
         userService = new UserService();
+        userDao = new UserDao();
     }
 
     @Override
@@ -33,9 +35,9 @@ public class LoginServlet extends HttpServlet {
 
         User user = new User(login, Integer.parseInt(password));
 
-        if (userService.isAuthorized(user, UserDao.users())) {
+        if (userService.isAuthorized(user, userDao.users())) {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("index.jsp");
+            getServletContext().getRequestDispatcher("/jsp/removeFilmsByYear.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
         }

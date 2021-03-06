@@ -15,7 +15,8 @@ public class FindFilmsByCurrentPreviousYearServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public FindFilmsByCurrentPreviousYearServlet() {
+    @Override
+    public void init() throws ServletException {
         dao = new FilmDao();
     }
 

@@ -11,11 +11,12 @@ import java.util.List;
 
 import static com.mykh.videolib.utils.ColumnConstants.*;
 
-public class UserDao {
+public class UserDao implements IUserDao {
 
     private static final UserService service = new UserService();
 
-    public static List<User> users() {
+    @Override
+    public  List<User> users() {
         List<User> result = new ArrayList<>();
         Connection connection = null;
         PreparedStatement statement = null;

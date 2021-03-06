@@ -15,7 +15,8 @@ public class FindActorsInParticularFilmServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public FindActorsInParticularFilmServlet() {
+    @Override
+    public void init() throws ServletException {
         dao = new FilmDao();
     }
 

@@ -14,7 +14,8 @@ public class RemoveFilmsByYearServlet extends HttpServlet {
 
     private FilmDao dao;
 
-    public RemoveFilmsByYearServlet() {
+    @Override
+    public void init() throws ServletException {
         dao = new FilmDao();
     }
 
