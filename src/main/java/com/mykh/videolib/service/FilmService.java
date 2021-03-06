@@ -5,10 +5,7 @@ import com.mykh.videolib.entities.Film;
 import com.mykh.videolib.entities.Producer;
 import com.mykh.videolib.utils.SqlQuery;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -65,6 +62,25 @@ public class FilmService {
     public List<Film> uniqueFilms(List<Film> films) {
         Set<Film> temp = new HashSet<>(films);
         return new ArrayList<>(temp);
+    }
+
+    public void close(Connection connection, Statement statement, ResultSet resultSet) {
+        try {
+            connection.close();
+            statement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void close(Connection connection, Statement statement) {
+        try {
+            connection.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

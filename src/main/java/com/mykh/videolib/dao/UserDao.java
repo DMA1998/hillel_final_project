@@ -1,7 +1,6 @@
 package com.mykh.videolib.dao;
 
 import com.mykh.videolib.connection.ConnectionPool;
-import com.mykh.videolib.connection.DbConnection;
 import com.mykh.videolib.entities.User;
 import com.mykh.videolib.service.UserService;
 import com.mykh.videolib.utils.SqlQuery;
@@ -14,22 +13,9 @@ import static com.mykh.videolib.utils.ColumnConstants.*;
 
 public class UserDao {
 
-    private UserService service;
+    private static final UserService service = new UserService();
 
-    public UserDao() {
-        service = new UserService();
-    }
-
-    public boolean isAuthorized(User currentUser) {
-        for (User user : users()) {
-            if (user.getLogin().equals(currentUser.getLogin()) && user.getPassword() == currentUser.getPassword())
-                return true;
-        }
-        return false;
-    }
-
-
-    public List<User> users() {
+    public static List<User> users() {
         List<User> result = new ArrayList<>();
         Connection connection = null;
         PreparedStatement statement = null;

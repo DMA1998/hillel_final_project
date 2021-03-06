@@ -29,7 +29,7 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection, statement, resultSet);
+        filmService.close(connection, statement, resultSet);
         return result;
     }
 
@@ -48,7 +48,7 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection, statement, resultSet);
+        filmService.close(connection, statement, resultSet);
         return result;
     }
 
@@ -66,7 +66,7 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection, statement, resultSet);
+        filmService.close(connection, statement, resultSet);
         return result;
     }
 
@@ -92,7 +92,7 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection, statement, resultSet);
+        filmService.close(connection, statement, resultSet);
         return filmService.uniqueFilms(result);
     }
 
@@ -108,29 +108,7 @@ public class FilmDao implements IFilmDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        close(connection, statement);
+        filmService.close(connection, statement);
         return year;
     }
-
-
-    private void close(Connection connection, Statement statement, ResultSet resultSet) {
-        try {
-            connection.close();
-            statement.close();
-            resultSet.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void close(Connection connection, Statement statement) {
-        try {
-            connection.close();
-            statement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }
