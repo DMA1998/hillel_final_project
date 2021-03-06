@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mykh.web</groupId>
-  <artifactId>HW24</artifactId>
+  <artifactId>Video_library</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>HW24 Maven Webapp</name>
+  <name>Video library Maven Webapp</name>
   <url>http://maven.apache.org</url>
  <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,7 +45,7 @@
 
     </dependencies>
 <build>
-        <finalName>HW24</finalName>
+        <finalName>Video_library</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
