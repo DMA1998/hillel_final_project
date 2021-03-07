@@ -22,7 +22,7 @@
         <c:forEach var="producer" items="${producers}">
             <h1 style="color:#eefaff">
                 <li>${producerName} ${producer.name}</li>
-                <li>${producerBirthday} ${producer.date}</li>
+                <li>${producerBirthday} ${producer.dateOfBirthday}</li>
             </h1>
             <br>
         </c:forEach>

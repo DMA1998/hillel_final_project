@@ -27,7 +27,7 @@ public class UserDao implements IUserDao {
             statement = connection.prepareStatement(SqlQuery.FIND_USERS_IN_DATABASE.getQuery());
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                User user = new User(resultSet.getString(USER_LOGIN), resultSet.getInt(USER_PASSWORD));
+                User user = new User(resultSet.getString(USER_LOGIN), resultSet.getString(USER_PASSWORD));
                 result.add(user);
             }
         } catch (SQLException e) {

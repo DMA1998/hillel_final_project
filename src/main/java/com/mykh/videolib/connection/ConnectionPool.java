@@ -11,7 +11,6 @@ public class ConnectionPool {
 
     private static ConnectionPool instance = null;
 
-
     public static ConnectionPool getInstance() {
         if (instance == null) {
             instance = new ConnectionPool();

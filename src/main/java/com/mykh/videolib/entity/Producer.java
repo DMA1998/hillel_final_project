@@ -3,14 +3,14 @@ package com.mykh.videolib.entity;
 public class Producer {
 
     private String name;
-    private String date;
+    private String dateOfBirthday;
 
     public Producer() {
     }
 
-    public Producer(String name, String date) {
+    public Producer(String name, String dateOfBirthday) {
         this.name = name;
-        this.date = date;
+        this.dateOfBirthday = dateOfBirthday;
     }
 
     public String getName() {
@@ -21,19 +21,19 @@ public class Producer {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateOfBirthday() {
+        return dateOfBirthday;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateOfBirthday(String dateOfBirthday) {
+        this.dateOfBirthday = dateOfBirthday;
     }
 
     @Override
     public String toString() {
         return "Producer(" +
                 "name - " + name +
-                ", birthday - " + date +
+                ", birthday - " + dateOfBirthday +
                 ')';
     }
     public static void s() {

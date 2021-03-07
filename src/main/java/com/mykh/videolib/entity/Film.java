@@ -6,20 +6,19 @@ import java.util.Objects;
 public class Film {
 
     private String name;
-    private String filmRelease;
-    private String country;
+    private String releaseDate;
+    private String countryOfOrigin;
     private Producer producer;
     private List<Actor> actors;
 
     public Film() {
     }
 
-    public Film(String name, String filmRelease, String country) {
+    public Film(String name, String releaseDate, String countryOfOrigin) {
         this.name = name;
-        this.filmRelease = filmRelease;
-        this.country = country;
+        this.releaseDate = releaseDate;
+        this.countryOfOrigin = countryOfOrigin;
     }
-
 
     public String getName() {
         return name;
@@ -29,20 +28,20 @@ public class Film {
         this.name = name;
     }
 
-    public String getFilmRelease() {
-        return filmRelease;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setFilmRelease(String filmRelease) {
-        this.filmRelease = filmRelease;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCountryOfOrigin() {
+        return countryOfOrigin;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryOfOrigin(String countryOfOrigin) {
+        this.countryOfOrigin = countryOfOrigin;
     }
 
     public Producer getProducer() {
@@ -78,8 +77,8 @@ public class Film {
     public String toString() {
         return "\nFilm :\n" +
                 "film name - " + name +
-                "\nfilm release - " + filmRelease  +
-                "\n film country - " + country  +
+                "\nfilm release - " + releaseDate +
+                "\n film country - " + countryOfOrigin +
                 "\n film producer - " + producer +
                 "\n film actors: " + actors +
                 '}';

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class DbConnection extends DbConfigs {
 
-
     public static Connection getConnection() throws SQLException {
         Connection result;
         String url = "jdbc:mysql://" + dbHost + dbPort + dbName + timeZone;

@@ -32,10 +32,11 @@
                 </c:otherwise>
             </c:choose>
         </div>
-        <ul class="navigation">
+        <ul class="navigation" style="width: 1317.5px">
             <li>
-                <form action="languageServlet" method="post">
-                    <select name="language" onchange="submit()" class="navigation">
+                <form action="languageServlet" method="post" class="languageButton" style="width: 1px; height: 22.938px">
+                    <select name="language" onchange="submit()" style="width: 72px;
+                     height: 80px; background: #ffa71d; color:#101010; border: #ffa71d">
                         <option value="en" ${locale == 'en' ? 'selected' : ''}>English</option>
                         <option value="it" ${locale == 'it' ? 'selected' : ''}>Italian</option>
                     </select>

@@ -12,7 +12,7 @@ public class UserService {
 
     public boolean isAuthorized(User currentUser,List<User> users) {
         for (User user : users) {
-            if (user.getLogin().equals(currentUser.getLogin()) && user.getPassword() == currentUser.getPassword())
+            if (user.getLogin().equals(currentUser.getLogin()) && user.getPassword().equals(currentUser.getPassword()))
                 return true;
         }
         return false;

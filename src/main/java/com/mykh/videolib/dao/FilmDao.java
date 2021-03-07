@@ -15,6 +15,32 @@ public class FilmDao implements IFilmDao {
     private static final FilmService filmService = new FilmService();
 
     @Override
+    public List<Film> findFilmsByCurrentAndPreviousYear() {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int previousYear = currentYear - 1;
+        List<Film> result = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = getInstance().getConnection();
+            statement = connection.prepareStatement(SqlQuery.FIND_FILMS_BY_CURRENT_PREVIOUS_YEAR.getQuery());
+            statement.setInt(1, previousYear);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Film film = filmService.getFilm(resultSet);
+                result.add(film);
+                filmService.appendProducerToFilm(result, connection);
+                filmService.appendActorsToFilm(result, connection);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        filmService.close(connection, statement, resultSet);
+        return filmService.uniqueFilms(result);
+    }
+
+    @Override
     public List<Actor> findActorsInParticularFilm(String film) {
         List<Actor> result = new ArrayList<>();
         Connection connection = null;
@@ -68,32 +94,6 @@ public class FilmDao implements IFilmDao {
         }
         filmService.close(connection, statement, resultSet);
         return result;
-    }
-
-    @Override
-    public List<Film> findFilmsByCurrentAndPreviousYear() {
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        int previousYear = currentYear - 1;
-        List<Film> result = new ArrayList<>();
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = getInstance().getConnection();
-            statement = connection.prepareStatement(SqlQuery.FIND_FILMS_BY_CURRENT_PREVIOUS_YEAR.getQuery());
-            statement.setInt(1, previousYear);
-            resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                Film film = filmService.getFilm(resultSet);
-                result.add(film);
-                filmService.appendProducerToFilm(result, connection);
-                filmService.appendActorsToFilm(result, connection);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        filmService.close(connection, statement, resultSet);
-        return filmService.uniqueFilms(result);
     }
 
     @Override

@@ -24,8 +24,8 @@
     <c:forEach var="film" items="${films}">
         <h1 style="color:#eefaff">
             <li>${filmName} ${film.name}</li>
-            <li>${filmRelease} ${film.filmRelease}</li>
-            <li>${filmCountry} ${film.country}</li>
+            <li>${filmRelease} ${film.releaseDate}</li>
+            <li>${filmCountry} ${film.countryOfOrigin}</li>
             <li>${filmProducer} ${film.producer.name}</li>
             <li>${filmActors} </li>
         </h1>

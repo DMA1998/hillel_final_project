@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        User user = new User(login, Integer.parseInt(password));
+        User user = new User(login, password);
 
         if (userService.isAuthorized(user, userDao.users())) {
             request.getSession().setAttribute("user", user);

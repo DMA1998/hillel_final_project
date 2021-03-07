@@ -33,7 +33,7 @@
         <c:forEach var="actor" items="${actors}">
             <h2 style="color:#eefaff">
                 <li>${actor1} ${actor.name}</li>
-                <li>${actorBirthday} ${actor.date}</li>
+                <li>${actorBirthday} ${actor.dateOfBirthday}</li>
             </h2>
             <br>
         </c:forEach>
