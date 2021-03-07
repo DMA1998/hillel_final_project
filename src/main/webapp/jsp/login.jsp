@@ -21,13 +21,6 @@
 <br>
 <br>
 <br>
-<div align="left">
-    <h2 style="color:#eefaff">
-        Test data:<br>
-        login: user<br>
-        password: 1234
-    </h2>
-</div>
 
 <div align="center" >
     <form method="post" action="loginServlet" >
